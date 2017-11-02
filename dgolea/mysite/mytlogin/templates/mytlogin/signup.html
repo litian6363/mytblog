@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>signup</title>
+</head>
+<body>
+<h1>Sign up view</h1>
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+<form action="{% url 'mytlogin:save_user' %}" method="post">
+    {% csrf_token %}
+    <label>Email: </label>
+    <input type="text" name="email"><br>
+    <label>Password: </label>
+    <input type="password" name="password"><br>
+    <input type="submit" value="signup">
+</form>
+</body>
+</html>

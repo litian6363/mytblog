@@ -32,6 +32,7 @@ ALLOWED_HOSTS = []
 # 所有APP都需在这定义来激活
 INSTALLED_APPS = [
     'polls.apps.PollsConfig',
+    'mytlogin.apps.MytloginConfig',
     
     'django.contrib.admin',
     'django.contrib.auth',

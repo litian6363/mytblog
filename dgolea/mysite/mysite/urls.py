@@ -18,6 +18,9 @@ from django.contrib import admin
 
 # 全局URL
 urlpatterns = [
+
+    url(r'^user/', include('mytlogin.urls')),
     url(r'^polls/', include('polls.urls')),
     url(r'^admin/', admin.site.urls),
+
 ]
