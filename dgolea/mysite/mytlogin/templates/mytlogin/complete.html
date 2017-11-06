@@ -1,2 +1,4 @@
-
-<a href="{% url 'polls:index' %}">ttttt</a>
+{% if massage_text %}
+<p>{{ massage_text }}</p>
+{% endif %}
+<a href="{% url 'polls:index' %}">返回主页</a>

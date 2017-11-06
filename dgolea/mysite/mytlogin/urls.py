@@ -19,4 +19,6 @@ urlpatterns = [
 
     url(r'^complete', views.complete, name='complete'),
 
+    url(r'^logout', views.logout, name='logout'),
+
 ]

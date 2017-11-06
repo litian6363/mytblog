@@ -27,12 +27,10 @@ session = {'cookie_name': 'mytlogin_session'}
 
 def index(request):
     latest_question_list = Question.objects.order_by('-pub_date')[:5]
-    user = request.COOKIES.get(session['cookie_name'])
-    context = {
-        'latest_question_list': latest_question_list,
-        'user': user
-    }
-    return render(request, 'polls/index.html', context)
+    list = {'latest_question_list': latest_question_list}
+    if request.COOKIES.get(session['cookie_name']):
+        list['email'] = request.COOKIES.get(session['cookie_name'])
+    return render(request, 'polls/index.html', list)
 
 
 class DetailView(generic.DetailView):
