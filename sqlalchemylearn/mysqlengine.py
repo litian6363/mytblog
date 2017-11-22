@@ -37,3 +37,7 @@ print(ed_user.name)
 print(ed_user.password)
 print(str(ed_user.id))
 
+# 创建会话
+from sqlalchemy.orm import sessionmaker
+# 自定义Session类
+Session = sessionmaker(bind=engine)
