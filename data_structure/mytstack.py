@@ -71,7 +71,7 @@ print(q.is_empty())
 print('队列测试完成\n')
 
 
-# 用嵌套列表来实现树
+# 用嵌套列表来实现二叉树
 myTree = ['a', ['b', ['d', [], []], ['e', [], []]], ['c', ['f', [], []], []]]
 print(myTree)
 print('left subtree = ', myTree[1])
@@ -81,7 +81,7 @@ print('r1 = ', myTree[2][1])
 print('END------')
 
 
-def BinaryTree(r):
+def binary_tree(r):
     return [r, [], []]
 
 
@@ -119,7 +119,7 @@ def getRightChild(root):
     return root[2]
 
 
-r = BinaryTree(3)
+r = binary_tree(3)
 insertLeft(r, 4)
 insertLeft(r, 5)
 insertRight(r, 6)
@@ -132,5 +132,55 @@ print(r)
 insertLeft(l, 11)
 print(r)
 print(getRightChild(getRightChild(r)))
+print('嵌套树测试结束\n')
 
-a = [3, [9, [11, [4, [], []], []], []], [7, [], [6, [], []]]]
+
+# 节点类和应用
+class BinaryTree:
+    def __init__(self, root_object):
+        self.key = root_object
+        self.left_child = None
+        self.right_child = None
+
+    def insert_left(self, new_node):
+        if not self.left_child:
+            self.left_child = BinaryTree(new_node)
+        else:
+            t = BinaryTree(new_node)
+            t.left_child = self.left_child
+            self.left_child = t
+
+    def insert_right(self, new_node):
+        if not self.right_child:
+            self.right_child = BinaryTree(new_node)
+        else:
+            t = BinaryTree(new_node)
+            t.right_child = self.right_child
+            self.right_child = t
+
+    def get_right_child(self):
+        return self.right_child
+
+    def get_left_child(self):
+        return self.left_child
+
+    def set_root_value(self, root_object):
+        self.key = root_object
+
+    def get_root_value(self):
+        return self.key
+
+r = BinaryTree('a')
+print(r.get_root_value())
+print(r.get_left_child())
+r.insert_left('b')
+print(r.get_left_child())
+print(r.get_left_child().get_root_value())
+r.insert_right('c')
+print(r.get_right_child())
+print(r.get_right_child().get_root_value())
+r.get_right_child().set_root_value('hello')
+print(r.get_right_child().get_root_value())
+r.get_right_child().insert_right('d')
+print(r.get_right_child().get_right_child().get_root_value())
+print('类二叉树测试结束\n')
