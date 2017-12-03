@@ -22,21 +22,22 @@ class Stack:
     def size(self):
         return len(self.stack)
 
-# 栈测试
-s = Stack()
-print(s.is_empty())
-s.push(4)
-s.push('dog')
-print(s.peek())
-s.push(True)
-print(s.size())
-print(s.is_empty())
-s.push(8.4)
-print(s.pop())
-print(s.pop())
-print(s.size())
-print(s.stack)
-print('栈测试完成\n')
+# # 栈测试
+# if __name__ == '__main__':
+#     s = Stack()
+#     print(s.is_empty())
+#     s.push(4)
+#     s.push('dog')
+#     print(s.peek())
+#     s.push(True)
+#     print(s.size())
+#     print(s.is_empty())
+#     s.push(8.4)
+#     print(s.pop())
+#     print(s.pop())
+#     print(s.size())
+#     print(s.stack)
+#     print('栈测试完成\n')
 
 
 # 模拟队列
@@ -57,28 +58,31 @@ class Queue:
         return len(self.queue)
 
 
-# 队列测试
-q = Queue()
-print(q.is_empty())
-q.enqueue(4)
-q.enqueue('dog')
-q.enqueue(True)
-print(q.size())
-print(q.dequeue())
-print(q.dequeue())
-print(q.dequeue())
-print(q.is_empty())
-print('队列测试完成\n')
+# # 队列测试
+# if __name__ == '__main__':
+#     q = Queue()
+#     print(q.is_empty())
+#     q.enqueue(4)
+#     q.enqueue('dog')
+#     q.enqueue(True)
+#     print(q.size())
+#     print(q.dequeue())
+#     print(q.dequeue())
+#     print(q.dequeue())
+#     print(q.is_empty())
+#     print('队列测试完成\n')
 
 
-# 用嵌套列表来实现二叉树
-myTree = ['a', ['b', ['d', [], []], ['e', [], []]], ['c', ['f', [], []], []]]
-print(myTree)
-print('left subtree = ', myTree[1])
-print('root = ', myTree[0])
-print('right subtree = ', myTree[2])
-print('r1 = ', myTree[2][1])
-print('END------')
+# # 用嵌套列表来实现二叉树
+
+# if __name__ == '__main__':
+#     myTree = ['a', ['b', ['d', [], []], ['e', [], []]], ['c', ['f', [], []], []]]
+#     print(myTree)
+#     print('left subtree = ', myTree[1])
+#     print('root = ', myTree[0])
+#     print('right subtree = ', myTree[2])
+#     print('r1 = ', myTree[2][1])
+#     print('END------')
 
 
 def binary_tree(r):
@@ -118,21 +122,21 @@ def getLeftChild(root):
 def getRightChild(root):
     return root[2]
 
-
-r = binary_tree(3)
-insertLeft(r, 4)
-insertLeft(r, 5)
-insertRight(r, 6)
-insertRight(r, 7)
-l = getLeftChild(r)
-print(l)
-
-setRootVal(l, 9)
-print(r)
-insertLeft(l, 11)
-print(r)
-print(getRightChild(getRightChild(r)))
-print('嵌套树测试结束\n')
+# if __name__ == '__main__':
+#     r = binary_tree(3)
+#     insertLeft(r, 4)
+#     insertLeft(r, 5)
+#     insertRight(r, 6)
+#     insertRight(r, 7)
+#     l = getLeftChild(r)
+#     print(l)
+#
+#     setRootVal(l, 9)
+#     print(r)
+#     insertLeft(l, 11)
+#     print(r)
+#     print(getRightChild(getRightChild(r)))
+#     print('嵌套树测试结束\n')
 
 
 # 节点类和应用
@@ -170,17 +174,18 @@ class BinaryTree:
     def get_root_value(self):
         return self.key
 
-r = BinaryTree('a')
-print(r.get_root_value())
-print(r.get_left_child())
-r.insert_left('b')
-print(r.get_left_child())
-print(r.get_left_child().get_root_value())
-r.insert_right('c')
-print(r.get_right_child())
-print(r.get_right_child().get_root_value())
-r.get_right_child().set_root_value('hello')
-print(r.get_right_child().get_root_value())
-r.get_right_child().insert_right('d')
-print(r.get_right_child().get_right_child().get_root_value())
-print('类二叉树测试结束\n')
+# if __name__ == '__main__':
+#     r = BinaryTree('a')
+#     print(r.get_root_value())
+#     print(r.get_left_child())
+#     r.insert_left('b')
+#     print(r.get_left_child())
+#     print(r.get_left_child().get_root_value())
+#     r.insert_right('c')
+#     print(r.get_right_child())
+#     print(r.get_right_child().get_root_value())
+#     r.get_right_child().set_root_value('hello')
+#     print(r.get_right_child().get_root_value())
+#     r.get_right_child().insert_right('d')
+#     print(r.get_right_child().get_right_child().get_root_value())
+#     print('类二叉树测试结束\n')
