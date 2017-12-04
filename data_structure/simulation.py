@@ -22,23 +22,6 @@ class Stack:
     def size(self):
         return len(self.stack)
 
-# # 栈测试
-# if __name__ == '__main__':
-#     s = Stack()
-#     print(s.is_empty())
-#     s.push(4)
-#     s.push('dog')
-#     print(s.peek())
-#     s.push(True)
-#     print(s.size())
-#     print(s.is_empty())
-#     s.push(8.4)
-#     print(s.pop())
-#     print(s.pop())
-#     print(s.size())
-#     print(s.stack)
-#     print('栈测试完成\n')
-
 
 # 模拟队列
 class Queue:
@@ -58,88 +41,7 @@ class Queue:
         return len(self.queue)
 
 
-# # 队列测试
-# if __name__ == '__main__':
-#     q = Queue()
-#     print(q.is_empty())
-#     q.enqueue(4)
-#     q.enqueue('dog')
-#     q.enqueue(True)
-#     print(q.size())
-#     print(q.dequeue())
-#     print(q.dequeue())
-#     print(q.dequeue())
-#     print(q.is_empty())
-#     print('队列测试完成\n')
-
-
-# # 用嵌套列表来实现二叉树
-
-# if __name__ == '__main__':
-#     myTree = ['a', ['b', ['d', [], []], ['e', [], []]], ['c', ['f', [], []], []]]
-#     print(myTree)
-#     print('left subtree = ', myTree[1])
-#     print('root = ', myTree[0])
-#     print('right subtree = ', myTree[2])
-#     print('r1 = ', myTree[2][1])
-#     print('END------')
-
-
-def binary_tree(r):
-    return [r, [], []]
-
-
-def insertLeft(root, newBranch):
-    t = root.pop(1)
-    if len(t) > 1:
-        root.insert(1, [newBranch, t, []])
-    else:
-        root.insert(1, [newBranch, [], []])
-    return root
-
-
-def insertRight(root, newBranch):
-    t = root.pop(2)
-    if len(t) > 1:
-        root.insert(2, [newBranch, [], t])
-    else:
-        root.insert(2, [newBranch, [], []])
-    return root
-
-
-def getRootVal(root):
-    return root[0]
-
-
-def setRootVal(root, newVal):
-    root[0] = newVal
-
-
-def getLeftChild(root):
-    return root[1]
-
-
-def getRightChild(root):
-    return root[2]
-
-# if __name__ == '__main__':
-#     r = binary_tree(3)
-#     insertLeft(r, 4)
-#     insertLeft(r, 5)
-#     insertRight(r, 6)
-#     insertRight(r, 7)
-#     l = getLeftChild(r)
-#     print(l)
-#
-#     setRootVal(l, 9)
-#     print(r)
-#     insertLeft(l, 11)
-#     print(r)
-#     print(getRightChild(getRightChild(r)))
-#     print('嵌套树测试结束\n')
-
-
-# 节点类和应用
+# 二叉树和应用
 class BinaryTree:
     def __init__(self, root_object):
         self.key = root_object
@@ -150,6 +52,7 @@ class BinaryTree:
         if not self.left_child:
             self.left_child = BinaryTree(new_node)
         else:
+            # 把原左节点变为新节点的左节点
             t = BinaryTree(new_node)
             t.left_child = self.left_child
             self.left_child = t
@@ -174,18 +77,58 @@ class BinaryTree:
     def get_root_value(self):
         return self.key
 
-# if __name__ == '__main__':
-#     r = BinaryTree('a')
-#     print(r.get_root_value())
-#     print(r.get_left_child())
-#     r.insert_left('b')
-#     print(r.get_left_child())
-#     print(r.get_left_child().get_root_value())
-#     r.insert_right('c')
-#     print(r.get_right_child())
-#     print(r.get_right_child().get_root_value())
-#     r.get_right_child().set_root_value('hello')
-#     print(r.get_right_child().get_root_value())
-#     r.get_right_child().insert_right('d')
-#     print(r.get_right_child().get_right_child().get_root_value())
-#     print('类二叉树测试结束\n')
+
+# 完全二叉堆,最小堆
+class BinaryHeap:
+    def __init__(self):
+        self.heap_list = [0]
+        self.current_size = 0
+
+    # 如节点比它的父节点小，则上浮
+    def perc_up(self, i):
+        while i // 2 > 0:
+            if self.heap_list[i] < self.heap_list[i // 2]:
+                self.heap_list[i // 2], self.heap_list[i] = self.heap_list[i], self.heap_list[i // 2]
+            i = i // 2
+
+    # 把新节点增加到最后，然后对比上浮
+    def insert(self, k):
+        self.heap_list.append(k)
+        self.current_size = self.current_size + 1
+        self.perc_up(self.current_size)
+
+    # 查找最小的子节点
+    def min_child(self, i):
+        if i * 2 + 1 > self.current_size:
+            return i * 2
+        else:
+            if self.heap_list[i*2] < self.heap_list[i*2+1]:
+                return i * 2
+            else:
+                return i * 2 + 1
+
+    # 对比自己最小的子节点，如果自己比较大则下沉
+    def perc_down(self, i):
+        while(i * 2) <= self.current_size:
+            mc = self.min_child(i)
+            if self.heap_list[i] > self.heap_list[mc]:
+                self.heap_list[i], self.heap_list[mc] = self.heap_list[mc], self.heap_list[i]
+            i = mc
+
+    # 返回最小的节点（根节点），然后把最后的节点变为根节点，下沉
+    def del_min(self):
+        retval = self.heap_list[1]
+        self.heap_list[1] = self.heap_list[self.current_size]
+        self.current_size = self.current_size - 1
+        self.heap_list.pop()
+        self.perc_down(1)
+        return retval
+
+    # 输入无序列表生成二叉堆，下沉循环次数为有子节点的节点总数
+    def build_heap(self, alist):
+        i = len(alist) // 2
+        self.current_size = len(alist)
+        self.heap_list = [0] + alist[:]
+        while i > 0:
+            self.perc_down(i)
+            i = i - 1

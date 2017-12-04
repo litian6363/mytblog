@@ -5,7 +5,7 @@
 # 怎样计算解析树中数学表达式的值
 # 怎样根据一个解析树还原数学表达式
 
-from data_structure.simulation import BinaryTree, Stack
+from mytblog.data_structure.simulation import Stack, BinaryTree
 import operator
 
 
@@ -71,6 +71,21 @@ def evaluate(parse_tree):
     else:
         return parse_tree.get_root_value()
 
+
+# 作用同evaluate,但用后序遍历
+def postorder_evaluate(tree):
+    operators = {'+': operator.add, '-': operator.sub, '*': operator.mul, '/': operator.truediv}
+    left_node = None
+    right_node = None
+    if tree:
+        left_node = postorder_evaluate(tree.get_left_child())
+        right_node = postorder_evaluate(tree.get_right_child())
+        if left_node and right_node:
+            return operators[tree.get_root_value()](left_node, right_node)
+        else:
+            return tree.get_root_value()
+
 if __name__ == '__main__':
     t1 = build_parse_tree('((10*10)*(30+(34-(10.2+3.8))))')
     print(evaluate(t1))
+    print(postorder_evaluate(t1))
