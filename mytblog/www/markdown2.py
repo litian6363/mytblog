@@ -37,7 +37,7 @@ number of extras (e.g., code syntax coloring, footnotes) as described on
 """
 
 cmdln_desc = """A fast and complete Python implementation of Markdown, a
-text-to-HTML conversion tool for web writers.
+text-to-HTML conversion tool for website writers.
 
 Supported extra syntax options (see -x|--extras option below and
 see <https://github.com/trentm/python-markdown2/wiki/Extras> for details):

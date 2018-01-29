@@ -1,0 +1,14 @@
+{
+  "name": "jslearn",
+  "version": "1.0.0",
+  "description": "js_learn",
+  "main": "ArrayLearn.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "litian",
+  "license": "ISC",
+  "devDependencies": {
+    "eslint-config-google": "^0.9.1"
+  }
+}

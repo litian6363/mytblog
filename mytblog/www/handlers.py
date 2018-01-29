@@ -62,8 +62,9 @@ def get_page_index(page_str):
     return p
 
 
-_re_email = re.compile(r'^(\w)+(\.\w)*\@(\w)+((\.\w{2,3}){1,3})$')
-_re_sha1 = re.compile(r'^[\w\.]{40}')
+# r'(^[\w-]+(\.[\w-]+)*@[\w-]+(\.[\w-]+)+$)'
+_re_email = re.compile(r'^(\w)+(\.\w)*@(\w)+((\.\w{2,3}){1,3})$')
+_re_sha1 = re.compile(r'^[\w.]{40}')
 
 
 # 编写URL处理函数

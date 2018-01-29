@@ -4,7 +4,7 @@
 __author__ = 'Michael Liao'
 
 '''
-async web application.
+async website application.
 '''
 
 import logging; logging.basicConfig(level=logging.INFO)

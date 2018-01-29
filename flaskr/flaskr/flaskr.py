@@ -11,16 +11,16 @@ app.config.from_object(__name__)
 
 # flask-sqlalchemy的数据库配置
 db = SQLAlchemy(app)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:root@localhost:3306/testsc?charset=utf8'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:root@localhost:3306/test?charset=utf8'
 
 # flask config，全局？
 app.config.update(dict(
     SECRET_KEY='development key',
     USERNAME='admin',
-    PASSWORD='default'
+    PASSWORD='123456'
 ))
-# flask默认配置
-app.config.from_envvar('FLASKR_SETTINGS', silent=True)
+# flask配置文件（没有也不报错）
+# app.config.from_envvar('FLASKR_SETTINGS', silent=True)
 
 
 # 模板
@@ -70,7 +70,7 @@ def login():
             session['logged_in'] = True
             flash('You were logged in')
             return redirect(url_for('show_entries'))
-    return render_template('login.html', error=error)
+    return render_template('user/login.html', error=error)
 
 
 @app.route('/logout')
