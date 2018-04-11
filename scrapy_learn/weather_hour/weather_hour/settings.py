@@ -17,10 +17,9 @@ NEWSPIDER_MODULE = 'weather_hour.spiders'
 MONGODB_HOST = 'localhost'
 MONGODB_PORT = 27017
 MONGODB_DBNAME = 'weather_data'
-MONGODB_DOCNAME = 'weather_of_hour'
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
-#USER_AGENT = 'weather_hour (+http://www.yourdomain.com)'
+# USER_AGENT = 'weather_hour (+http://www.yourdomain.com)'
 
 # Obey robots.txt rules
 ROBOTSTXT_OBEY = True
@@ -72,9 +71,9 @@ FEED_EXPORT_ENCODING = 'utf-8'
 
 # Configure item pipelines
 # See https://doc.scrapy.org/en/latest/topics/item-pipeline.html
-#ITEM_PIPELINES = {
-#    'weather_hour.pipelines.WeatherHourPipeline': 300,
-#}
+ITEM_PIPELINES = {
+   'weather_hour.pipelines.WeatherHourPipeline': 300,
+}
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See https://doc.scrapy.org/en/latest/topics/autothrottle.html
